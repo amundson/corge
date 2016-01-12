@@ -20,7 +20,7 @@ int
 Corge::corgegate() const
 {
     int corge_version = get_version();
-    std::cout << "Corge::corgeifier version " << corge_version
+    std::cout << "Corge::corgegate version " << corge_version
               << " invoked\n";
 
     Quux quux;
