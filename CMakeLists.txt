@@ -11,7 +11,7 @@ link_directories(${QUUX_LIB_DIR})
 set(INCLUDE_INSTALL_DIR include/ CACHE PATH "install directory")
 set(LIB_INSTALL_DIR lib/ CACHE PATH "lib directory")
 
-include_directories(${CORGE_SOURCE_DIR})
+include_directories(BEFORE ${CORGE_SOURCE_DIR})
 enable_testing()
 
 include(CMakePackageConfigHelpers)
