@@ -24,9 +24,9 @@ Corge::corgegate() const
               << " invoked\n";
 
     Quux quux;
-    int quux_version = quux.quuxifier();
+    int quux_version = quux.quuxify();
 
-    if(garply_version != corge_version) {
+    if(quux_version != corge_version) {
         throw std::runtime_error("Corge found an incompatible version of Garply.");
     }
 

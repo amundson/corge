@@ -5,7 +5,7 @@ configure_file (
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 add_library(corge SHARED corge.cc corge.h)
-target_link_libraries(corge garply)
+target_link_libraries(corge quux)
 
 install(TARGETS corge DESTINATION ${LIB_INSTALL_DIR})
 install(FILES
