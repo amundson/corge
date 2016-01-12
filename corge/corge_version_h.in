@@ -1,0 +1,2 @@
+const int corge_version_major = @CORGE_VERSION_MAJOR@;
+const int corge_version_minor = @CORGE_VERSION_MINOR@;

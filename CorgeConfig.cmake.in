@@ -1,0 +1,8 @@
+set(CORGE_VERSION @CORGE_VERSION@)
+
+@PACKAGE_INIT@
+
+set_and_check(CORGE_INCLUDE_DIR "@PACKAGE_INCLUDE_INSTALL_DIR@")
+set_and_check(CORGE_LIB_DIR "@PACKAGE_LIB_INSTALL_DIR@")
+
+check_required_components(Corge)
