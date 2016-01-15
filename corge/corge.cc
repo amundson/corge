@@ -1,4 +1,5 @@
 #include <iostream>
+#include <stdexcept>
 #include "corge.h"
 #include "corge_version.h"
 #include "quux/quux.h"
