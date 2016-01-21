@@ -6,7 +6,7 @@ set(CORGE_VERSION_PATCH 1)
 set(CORGE_VERSION
     "${CORGE_VERSION_MAJOR}.${CORGE_VERSION_MINOR}.${CORGE_VERSION_PATCH}")
 
-find_package(Quux 1.0 EXACT REQUIRED CONFIG)
+find_package(Quux 1.0.2 EXACT REQUIRED CONFIG)
 include_directories(${QUUX_INCLUDE_DIR})
 link_directories(${QUUX_LIB_DIR})
 
