@@ -2,8 +2,6 @@ cmake_minimum_required(VERSION 3.0.0)
 project(CORGE VERSION 2.0.0)
 
 find_package(Quux 2.0.0 REQUIRED CONFIG)
-include_directories(${QUUX_INCLUDE_DIR})
-link_directories(${QUUX_LIB_DIR})
 
 include(GNUInstallDirs)
 

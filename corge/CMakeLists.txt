@@ -5,7 +5,7 @@ configure_file (
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 add_library(corge SHARED corge.cc corge.h)
-target_link_libraries(corge quux)
+target_link_libraries(corge quux::quux)
 
 add_executable(corgegator corgegator.cc)
 target_link_libraries(corgegator corge)
