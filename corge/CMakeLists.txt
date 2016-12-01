@@ -10,8 +10,10 @@ target_link_libraries(corge quux)
 add_executable(corgegator corgegator.cc)
 target_link_libraries(corgegator corge)
 
-install(TARGETS corge DESTINATION ${LIB_INSTALL_DIR})
-install(TARGETS corgegator DESTINATION ${BIN_INSTALL_DIR})
+install(TARGETS corge corgegator
+  RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
 install(FILES
         corge.h
-        DESTINATION ${INCLUDE_INSTALL_DIR}/corge)
+        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/corge)
+

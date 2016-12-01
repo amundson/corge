@@ -5,9 +5,7 @@ find_package(Quux 2.0.0 REQUIRED CONFIG)
 include_directories(${QUUX_INCLUDE_DIR})
 link_directories(${QUUX_LIB_DIR})
 
-set(INCLUDE_INSTALL_DIR include/ CACHE PATH "install directory")
-set(LIB_INSTALL_DIR lib/ CACHE PATH "lib directory")
-set(BIN_INSTALL_DIR bin/ CACHE PATH "bin directory")
+include(GNUInstallDirs)
 
 include_directories(BEFORE ${CORGE_SOURCE_DIR})
 enable_testing()
@@ -16,8 +14,8 @@ include(CMakePackageConfigHelpers)
 
 configure_package_config_file(CorgeConfig.cmake.in
   ${CMAKE_CURRENT_BINARY_DIR}/CorgeConfig.cmake
-  INSTALL_DESTINATION ${LIB_INSTALL_DIR}/corge/cmake
-  PATH_VARS INCLUDE_INSTALL_DIR LIB_INSTALL_DIR BIN_INSTALL_DIR)
+  INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/corge
+  PATH_VARS CMAKE_INSTALL_INCLUDEDIR CMAKE_INSTALL_LIBDIR)
 
 write_basic_package_version_file(
   ${CMAKE_CURRENT_BINARY_DIR}/CorgeConfigVersion.cmake
@@ -26,7 +24,7 @@ write_basic_package_version_file(
 
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/CorgeConfig.cmake
               ${CMAKE_CURRENT_BINARY_DIR}/CorgeConfigVersion.cmake
-        DESTINATION ${LIB_INSTALL_DIR}/corge/cmake)
+              DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/corge)
 
 add_subdirectory(corge)
 add_subdirectory(tests)
