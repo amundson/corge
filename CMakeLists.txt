@@ -5,7 +5,6 @@ find_package(Quux 2.0.0 REQUIRED CONFIG)
 
 include(GNUInstallDirs)
 
-include_directories(BEFORE ${CORGE_SOURCE_DIR})
 enable_testing()
 
 include(CMakePackageConfigHelpers)
