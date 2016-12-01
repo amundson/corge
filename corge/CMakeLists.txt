@@ -16,8 +16,9 @@ add_executable(corgegator corgegator.cc)
 target_link_libraries(corgegator corge)
 
 install(TARGETS corge corgegator
-  RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
-  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+        EXPORT CorgeTargets
+        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
 install(FILES
         corge.h
         DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/corge)

@@ -22,6 +22,9 @@ write_basic_package_version_file(
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/CorgeConfig.cmake
               ${CMAKE_CURRENT_BINARY_DIR}/CorgeConfigVersion.cmake
               DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/corge)
+install(EXPORT CorgeTargets
+        NAMESPACE corge::
+        DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/corge)
 
 add_subdirectory(corge)
 add_subdirectory(tests)
