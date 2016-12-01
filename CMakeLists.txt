@@ -1,12 +1,7 @@
 cmake_minimum_required(VERSION 3.0.0)
-project(CORGE)
-set(CORGE_VERSION_MAJOR 1)
-set(CORGE_VERSION_MINOR 0)
-set(CORGE_VERSION_PATCH 3)
-set(CORGE_VERSION
-    "${CORGE_VERSION_MAJOR}.${CORGE_VERSION_MINOR}.${CORGE_VERSION_PATCH}")
+project(CORGE VERSION 2.0.0)
 
-find_package(Quux REQUIRED CONFIG)
+find_package(Quux 2.0.0 REQUIRED CONFIG)
 include_directories(${QUUX_INCLUDE_DIR})
 link_directories(${QUUX_LIB_DIR})
 
