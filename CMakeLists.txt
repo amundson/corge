@@ -1,37 +1,64 @@
 cmake_minimum_required(VERSION 3.0.0)
-project(CORGE)
-set(CORGE_VERSION_MAJOR 1)
-set(CORGE_VERSION_MINOR 0)
-set(CORGE_VERSION_PATCH 3)
-set(CORGE_VERSION
-    "${CORGE_VERSION_MAJOR}.${CORGE_VERSION_MINOR}.${CORGE_VERSION_PATCH}")
+project(CORGE VERSION 2.0.0)
 
-find_package(Quux REQUIRED CONFIG)
-include_directories(${QUUX_INCLUDE_DIR})
-link_directories(${QUUX_LIB_DIR})
+find_package(Quux 2.0.0 REQUIRED CONFIG)
 
-set(INCLUDE_INSTALL_DIR include/ CACHE PATH "install directory")
-set(LIB_INSTALL_DIR lib/ CACHE PATH "lib directory")
-set(BIN_INSTALL_DIR bin/ CACHE PATH "bin directory")
+include(GNUInstallDirs)
 
-include_directories(BEFORE ${CORGE_SOURCE_DIR})
 enable_testing()
+
+add_subdirectory(corge)
+add_subdirectory(tests)
 
 include(CMakePackageConfigHelpers)
 
-configure_package_config_file(CorgeConfig.cmake.in
-  ${CMAKE_CURRENT_BINARY_DIR}/CorgeConfig.cmake
-  INSTALL_DESTINATION ${LIB_INSTALL_DIR}/corge/cmake
-  PATH_VARS INCLUDE_INSTALL_DIR LIB_INSTALL_DIR BIN_INSTALL_DIR)
-
+# - Versioning File (Same for Build/Install Trees)
 write_basic_package_version_file(
   ${CMAKE_CURRENT_BINARY_DIR}/CorgeConfigVersion.cmake
   VERSION ${CORGE_VERSION}
   COMPATIBILITY ExactVersion)
 
-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/CorgeConfig.cmake
-              ${CMAKE_CURRENT_BINARY_DIR}/CorgeConfigVersion.cmake
-        DESTINATION ${LIB_INSTALL_DIR}/corge/cmake)
+# - Build Tree Config/Targets Files
+set(CORGE_EXPORTED_INCLUDEDIR "${PROJECT_SOURCE_DIR}")
+set(CORGE_EXPORTED_LIBDIR "${PROJECT_BINARY_DIR}/corge")
 
-add_subdirectory(corge)
-add_subdirectory(tests)
+configure_package_config_file(CorgeConfig.cmake.in
+  ${CMAKE_CURRENT_BINARY_DIR}/CorgeConfig.cmake
+  INSTALL_DESTINATION ${CMAKE_CURRENT_BINARY_DIR}
+  INSTALL_PREFIX ${CMAKE_CURRENT_BINARY_DIR}
+  PATH_VARS CORGE_EXPORTED_INCLUDEDIR CORGE_EXPORTED_LIBDIR)
+
+# NB: must be called after EXPORT argument is defined,
+# hence moving add_subdirectory earlier.
+export(EXPORT CorgeTargets NAMESPACE corge::)
+
+# - Install Tree Config/Targets Files
+set(CORGE_EXPORTED_INCLUDEDIR "${CMAKE_INSTALL_INCLUDEDIR}")
+set(CORGE_EXPORTED_LIBDIR "${CMAKE_INSTALL_LIBDIR}")
+
+configure_package_config_file(CorgeConfig.cmake.in
+  ${CMAKE_CURRENT_BINARY_DIR}/InstallTreeFiles/CorgeConfig.cmake
+  INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/corge
+  PATH_VARS CORGE_EXPORTED_INCLUDEDIR CORGE_EXPORTED_LIBDIR)
+
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/InstallTreeFiles/CorgeConfig.cmake
+              ${CMAKE_CURRENT_BINARY_DIR}/CorgeConfigVersion.cmake
+              DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/corge)
+install(EXPORT CorgeTargets
+        NAMESPACE corge::
+        DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/corge)
+
+# - Uninstall target
+if (NOT TARGET uninstall)
+  configure_file(
+    "${CMAKE_CURRENT_LIST_DIR}/uninstall.cmake.in"
+    "${CMAKE_BINARY_DIR}/uninstall.cmake"
+    IMMEDIATE
+    @ONLY
+    )
+
+  add_custom_target(uninstall
+    COMMAND "${CMAKE_COMMAND}" -P "${CMAKE_BINARY_DIR}/uninstall.cmake"
+    WORKING_DIRECTORY "${CMAKE_BINARY_DIR}"
+    )
+endif()

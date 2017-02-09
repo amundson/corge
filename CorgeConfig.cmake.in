@@ -1,8 +1,16 @@
 set(CORGE_VERSION @CORGE_VERSION@)
 
+# - Find dependencies first
+# 1) If we can't find them, no point going further
+# 2) Prevent override of the PACKAGE_INIT created variables
+include(CMakeFindDependencyMacro)
+find_dependency(Quux @QUUX_VERSION@ EXACT)
+
 @PACKAGE_INIT@
 
-set_and_check(CORGE_INCLUDE_DIR "@PACKAGE_INCLUDE_INSTALL_DIR@")
-set_and_check(CORGE_LIB_DIR "@PACKAGE_LIB_INSTALL_DIR@")
+set_and_check(CORGE_INCLUDE_DIR "@PACKAGE_CORGE_EXPORTED_INCLUDEDIR@")
+set_and_check(CORGE_LIB_DIR "@PACKAGE_CORGE_EXPORTED_LIBDIR@")
+
+include("${CMAKE_CURRENT_LIST_DIR}/CorgeTargets.cmake")
 
 check_required_components(Corge)
