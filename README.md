@@ -1,4 +1,11 @@
 # corge
 The corge toy package.
-corge depends on quux.
+
+* Provides
+    * Library: `libcorge`
+    * Executable: `corgegator`
+
+* Dependencies
+    * quux, [https://github.com/amundson/quux]()
+
 
