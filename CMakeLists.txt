@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.0.0)
-project(CORGE VERSION 2.0.0)
+project(CORGE VERSION 3.0.0)
 
-find_package(Quux 2.0.0 REQUIRED CONFIG)
+find_package(Quux 3.0.0 REQUIRED CONFIG)
 
 include(GNUInstallDirs)
 
