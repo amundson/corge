@@ -1,0 +1,7 @@
+# ninja log v5
+1	253	1699463811039019878	tests/CMakeFiles/test_corge.dir/test_corge.cc.o	6e64e1a79268a62d
+462	519	1699463811307463568	corge/libcorge.dylib	7bb23134eeafe4ba
+1	460	1699463811246699220	corge/CMakeFiles/corgegator.dir/corgegator.cc.o	ace571d6b97cb2ba
+519	574	1699463811362798582	corge/corgegator	8dc0bc3899c665f4
+0	462	1699463811246695762	corge/CMakeFiles/corge.dir/corge.cc.o	83bcaca9ae3456f7
+519	574	1699463811363788165	tests/test_corge	2305ec421b7f22b1

@@ -1,0 +1,20 @@
+[
+{
+  "directory": "/Users/amundson/code/nsd/corge/build",
+  "command": "/usr/bin/clang++ -Dcorge_EXPORTS -I/Users/amundson/code/nsd/corge/build/corge -I/Users/amundson/code/nsd/corge -isystem /Users/amundson/code/nsd/quux -isystem /Users/amundson/code/nsd/garply -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.0.sdk -mmacosx-version-min=13.6 -fPIC -o corge/CMakeFiles/corge.dir/corge.cc.o -c /Users/amundson/code/nsd/corge/corge/corge.cc",
+  "file": "/Users/amundson/code/nsd/corge/corge/corge.cc",
+  "output": "corge/CMakeFiles/corge.dir/corge.cc.o"
+},
+{
+  "directory": "/Users/amundson/code/nsd/corge/build",
+  "command": "/usr/bin/clang++ -I/Users/amundson/code/nsd/corge -isystem /Users/amundson/code/nsd/quux -isystem /Users/amundson/code/nsd/garply -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.0.sdk -mmacosx-version-min=13.6 -o corge/CMakeFiles/corgegator.dir/corgegator.cc.o -c /Users/amundson/code/nsd/corge/corge/corgegator.cc",
+  "file": "/Users/amundson/code/nsd/corge/corge/corgegator.cc",
+  "output": "corge/CMakeFiles/corgegator.dir/corgegator.cc.o"
+},
+{
+  "directory": "/Users/amundson/code/nsd/corge/build",
+  "command": "/usr/bin/clang++ -I/Users/amundson/code/nsd/corge -isystem /Users/amundson/code/nsd/quux -isystem /Users/amundson/code/nsd/garply -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.0.sdk -mmacosx-version-min=13.6 -o tests/CMakeFiles/test_corge.dir/test_corge.cc.o -c /Users/amundson/code/nsd/corge/tests/test_corge.cc",
+  "file": "/Users/amundson/code/nsd/corge/tests/test_corge.cc",
+  "output": "tests/CMakeFiles/test_corge.dir/test_corge.cc.o"
+}
+]

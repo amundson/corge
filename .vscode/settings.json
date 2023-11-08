@@ -1,0 +1,6 @@
+{
+    "cmake.configureSettings": {
+        "Garply_DIR": "/Users/amundson/code/nsd/garply/build",
+        "Quux_DIR": "/Users/amundson/code/nsd/quux/build"
+    }
+}
